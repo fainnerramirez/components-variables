@@ -1,4 +1,5 @@
-import { Box, ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Stack } from "@chakra-ui/react";
+import { ButtonComponent } from "./components/button-component";
 import { InformationCard } from "./components/information-card";
 
 type Props = {};
@@ -6,16 +7,19 @@ type Props = {};
 const App: React.FC<Props> = () => {
   return (
     <ChakraProvider>
-      <Box
+      <Stack
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
         width={"100vw"}
         height={"100vh"}
         bg={"#f0e7db"}
+        spacing={10}
+        flexDir={{ base: "column", lg: "row" }}
       >
         <InformationCard />
-      </Box>
+        <ButtonComponent />
+      </Stack>
     </ChakraProvider>
   );
 };
