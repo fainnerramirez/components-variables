@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+# Componentes variantes en React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Autor: Fainner Ramirez
 
-Currently, two official plugins are available:
+Descripción
+Este repositorio contiene dos componentes en React: InformationCard y ButtonModal. Estos componentes utilizan Chakra UI para los elementos de la interfaz de usuario, hooks de React para manejar el estado y los efectos, y otras bibliotecas adicionales como canvas-confetti para animaciones y clsx para manejar clases dinámicas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El proyecto está diseñado para mostrar cómo realizar peticiones de datos de manera dinámica, interactuar a través de botones y modales, y mostrar efectos de animación con confeti. El objetivo principal es proporcionar una experiencia de usuario fluida y visualmente atractiva utilizando React y técnicas modernas de UI.
 
-## Expanding the ESLint configuration
+## Tabla de Contenidos
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Componente InformationCard
+- Componente ButtonModal
+- Instalación y Configuración
+- Estructura del Proyecto
 
-- Configure the top-level `parserOptions` property like this:
+## Componente InformationCard
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+El componente InformationCard obtiene y muestra datos aleatorios de dos APIs: una para obtener posts (API_POSTS) y otra para obtener imágenes aleatorias de perros (API_DOGS). También incluye colores de fondo, estilos de borde y radios de borde aleatorios para que la tarjeta se vea más atractiva.
+
+Características principales:
+Color de fondo dinámico: Se aplica un color de fondo aleatorio cuando se carga el componente.
+Bordes aleatorios: Cada tarjeta tiene un estilo de borde y radio de esquina diferente.
+Obtención de datos: Usa el hook useEffect para obtener datos de un post aleatorio y una foto de perro aleatoria al montar el componente.
+Cargadores de esqueleto: Muestra cargadores de tipo esqueleto mientras se obtienen los datos de las APIs.
+Efecto de confeti: Usa canvas-confetti para generar una animación de confeti celebratorio al hacer clic en un botón
+
+## Componente ButtonModal
+
+El componente ButtonModal es un botón que abre un modal mostrando la información de la configuración del botón (como color de fondo, variantes, color de hover, etc.). Este componente utiliza el Modal de Chakra UI y se integra con la librería motion para proporcionar efectos de animación en el botón.
+
+Características principales:
+Personalización del botón: El color de fondo, variante, tamaño, color de hover y texto del botón se pasan dinámicamente como props.
+Efectos de animación: El botón tiene efectos de animación como escalado en hover y tap, y rotación cuando se arrastra, gracias a la librería motion.
+Modal de visualización: Al hacer clic en el botón, se abre un modal que muestra una lista con las características del botón.
+
+## Instalación y Configuración
+
+```bash
+git clone https://github.com/fainnerramirez/components-variables
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### instalar dependencias:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+npm i
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Ejecutar el proyecto:
+
+```bash
+npm run dev
+```
+
+## Estructura del Proyecto
+
+```arduino
+/src
+  /api
+    api.config.ts       // Configuración de las APIs
+  /components
+    InformationCard.tsx // Componente InformationCard
+    ButtonModal.tsx     // Componente ButtonModal
+  /style
+    global.module.css   // Estilos globales
+  /utils
+    consts/constants.ts // Constantes de configuración
+  App.tsx               // Componente principal
 ```
